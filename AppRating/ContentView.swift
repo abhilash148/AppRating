@@ -6,33 +6,100 @@
 //
 
 import SwiftUI
+import CoreML
 
 struct ContentView: View {
     
-    let categories: [String: Int] = ["Category1": 3, "Category2": 2, "Category3": 1]
+    let categories: [String: Int] = ["ART_AND_DESIGN": 0,
+                                     "AUTO_AND_VEHICLES": 1,
+                                     "BEAUTY": 2,
+                                     "BOOKS_AND_REFERENCE": 3,
+                                     "BUSINESS": 4,
+                                     "COMICS": 5,
+                                     "COMMUNICATION": 6,
+                                     "DATING": 7,
+                                     "EDUCATION": 8,
+                                     "ENTERTAINMENT": 9,
+                                     "EVENTS": 10,
+                                     "FINANCE": 11,
+                                     "FOOD_AND_DRINK": 12,
+                                     "HEALTH_AND_FITNESS": 13,
+                                     "HOUSE_AND_HOME": 14,
+                                     "LIBRARIES_AND_DEMO": 15,
+                                     "LIFESTYLE": 16,
+                                     "GAME": 17,
+                                     "FAMILY": 18,
+                                     "MEDICAL": 19,
+                                     "SOCIAL": 20,
+                                     "SHOPPING": 21,
+                                     "PHOTOGRAPHY": 22,
+                                     "SPORTS": 23,
+                                     "TRAVEL_AND_LOCAL": 24,
+                                     "TOOLS": 25,
+                                     "PERSONALIZATION": 26,
+                                     "PRODUCTIVITY": 27,
+                                     "PARENTING": 28,
+                                     "WEATHER": 29,
+                                     "VIDEO_PLAYERS": 30,
+                                     "NEWS_AND_MAGAZINES": 31,
+                                     "MAPS_AND_NAVIGATION": 32]
     @State private var selectedCategory: String = ""
     
     @State private var pickedSize: Double = 100.0
     
-    let appTypes = ["Free", "Paid"]
+    let appTypes: [String: Int] = ["Free": 0, "Paid": 1]
     @State private var selectedAppType = "Free"
     
     var isPaid: Bool {
         selectedAppType == "Paid"
     }
     
-    @State private var pickedPrize: Double = 10.0
+    @State private var pickedPrize: Double = 0.0
     
-    let genres = ["Genre1", "Genre2", "Genre3"]
+    let genres: [String: Int] = ["Beauty": 14,
+                                 "Books & Reference": 19,
+                                 "Business": 22,
+                                 "Comics": 34,
+                                 "Comics_Creativity": 35,
+                                 "Communication": 36,
+                                 "Dating": 38,
+                                 "Education": 39,
+                                 "Education_Creativity": 42,
+                                 "Education_Music & Video": 44,
+                                 "Education_Action & Adventure": 40,
+                                 "Education_Pretend Play": 45,
+                                 "Education_Brain Games": 41,
+                                 "Entertainment": 52,
+                                 "Entertainment_Music & Video": 57,
+                                 "Entertainment_Brain Games": 54,
+                                 "Entertainment_Creativity": 55,
+                                 "Events": 59,
+                                 "Finance": 60,
+                                 "Food & Drink": 61,
+                                 "Health & Fitness": 62,
+                                 "House & Home": 65,
+                                 "Libraries & Demo": 66,
+                                 "Lifestyle": 67,
+                                 "Lifestyle_Pretend Play": 69,
+                                 "Adventure_Action & Adventure": 3,
+                                 "Arcade": 6,
+                                 "Casual": 27,
+                                 "Card": 23,
+                                 "Casual_Pretend Play": 33,
+                                 "Action": 0,
+                                 "Strategy": 104,
+                                 "Puzzle": 83,
+                                 "Sports": 102
+    ]
     @State private var selectedGenre: String = ""
     
-    let contentRatings = ["contentRating1", "contentRating2", "contentRating3"]
+    let contentRatings: [String: Int] = ["Everyone": 1, "Teen": 4, "Everyone 10+": 2, "Mature 17+": 3, "Adults only 18+": 0, "Unrated": 5]
     @State private var selectedCR: String = ""
     
     @State private var pickedReviewsCount: Double = 10.0
     
     @State private var showAlert: Bool = false
-    @State private var alertText: String = "Your App Rating: 1.9"
+    @State private var alertText: String = "Your App Rating: 4.3"
     
     var body: some View {
         
@@ -47,21 +114,21 @@ struct ContentView: View {
                     .pickerStyle(.navigationLink)
                     
                     Picker("Select a Genre", selection: $selectedGenre) {
-                        ForEach(genres, id: \.self) {
+                        ForEach(genres.keys.sorted(), id: \.self) {
                             Text($0)
                         }
                     }
                     .pickerStyle(.navigationLink)
                     
                     Picker("Content Rating", selection: $selectedCR) {
-                        ForEach(contentRatings, id: \.self) {
+                        ForEach(contentRatings.keys.sorted(), id: \.self) {
                             Text($0)
                         }
                     }
                     .pickerStyle(.navigationLink)
                     
                     Picker("App Type", selection: $selectedAppType) {
-                        ForEach(appTypes, id: \.self) {
+                        ForEach(appTypes.keys.sorted(), id: \.self) {
                             Text($0)
                         }
                     }
@@ -71,9 +138,9 @@ struct ContentView: View {
                         VStack {
                             Text("Pick Price:")
                             HStack {
-                                Text("$10")
+                                Text("$0")
                                     .font(.footnote)
-                                Slider(value: $pickedPrize, in: 1...50)
+                                Slider(value: $pickedPrize, in: 0...50)
                                 Text("$50")
                                     .font(.footnote)
                             }
