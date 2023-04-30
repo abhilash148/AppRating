@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D7BF98B29FF274D000AD529 /* Rating.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8D7BF98A29FF274D000AD529 /* Rating.mlmodel */; };
 		8DE7E50E29F6349C00C0AC48 /* AppRatingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE7E50D29F6349C00C0AC48 /* AppRatingApp.swift */; };
 		8DE7E51029F6349C00C0AC48 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE7E50F29F6349C00C0AC48 /* ContentView.swift */; };
 		8DE7E51229F6349D00C0AC48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DE7E51129F6349D00C0AC48 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D7BF98A29FF274D000AD529 /* Rating.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Rating.mlmodel; sourceTree = "<group>"; };
 		8DE7E50A29F6349C00C0AC48 /* AppRating.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppRating.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DE7E50D29F6349C00C0AC48 /* AppRatingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRatingApp.swift; sourceTree = "<group>"; };
 		8DE7E50F29F6349C00C0AC48 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 		8DE7E50C29F6349C00C0AC48 /* AppRating */ = {
 			isa = PBXGroup;
 			children = (
+				8D7BF98A29FF274D000AD529 /* Rating.mlmodel */,
 				8DE7E50D29F6349C00C0AC48 /* AppRatingApp.swift */,
 				8DE7E50F29F6349C00C0AC48 /* ContentView.swift */,
 				8DE7E51129F6349D00C0AC48 /* Assets.xcassets */,
@@ -139,6 +142,7 @@
 			files = (
 				8DE7E51029F6349C00C0AC48 /* ContentView.swift in Sources */,
 				8DE7E50E29F6349C00C0AC48 /* AppRatingApp.swift in Sources */,
+				8D7BF98B29FF274D000AD529 /* Rating.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

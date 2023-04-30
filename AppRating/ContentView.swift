@@ -183,7 +183,7 @@ struct ContentView: View {
                 }
                 
                 Section {
-                    Text("Selected category: \(categories[selectedCategory, default: 0])")
+                    Text("Selected category: \(contentRatings[selectedCR, default: 0])")
                 }
 
             }
@@ -194,10 +194,45 @@ struct ContentView: View {
             .toolbar {
                 Button("Predict") {
                     // predict part goes here
-                    showAlert = true
+//                    showAlert = true
+                    predictRating()
                 }
             }
 
+        }
+        
+    }
+    
+    func predictRating() {
+        
+        do {
+            
+            let config = MLModelConfiguration()
+            let model = try Rating(configuration: config)
+            
+            // set values
+            let categoryValue = categories[selectedCategory, default: 0]
+            let genreValue = genres[selectedGenre, default: 0]
+            let crValue = contentRatings[selectedCR, default: 0]
+            let AppTypeValue = appTypes[selectedAppType, default: 0]
+            let appPrice = pickedPrize
+            let appSize = pickedSize
+            let reviewsValue = pickedReviewsCount
+            
+            let prediction = try model.prediction(Category: Double(categoryValue),
+                                                  Reviews: Double(reviewsValue),
+                                                  Size: Double(appSize),
+                                                  Installs: Double(0),
+                                                  Type_: Double(AppTypeValue),
+                                                  Price: Double(appPrice),
+                                                  Content_Rating: Double(crValue),
+                                                  Genres: Double(genreValue))
+            
+            alertText = "Your App Rating: \(String(format: "%.1f", prediction.Rating))"
+            showAlert = true
+        } catch {
+            alertText = "Something went wrong!"
+            showAlert = true
         }
         
     }
