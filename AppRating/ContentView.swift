@@ -181,11 +181,6 @@ struct ContentView: View {
                 } header: {
                     Text("Number of Reviews")
                 }
-                
-                Section {
-                    Text("Selected category: \(contentRatings[selectedCR, default: 0])")
-                }
-
             }
             .navigationTitle("App Rating")
             .alert(alertText, isPresented: $showAlert) {
@@ -193,8 +188,6 @@ struct ContentView: View {
             }
             .toolbar {
                 Button("Predict") {
-                    // predict part goes here
-//                    showAlert = true
                     predictRating()
                 }
             }
